@@ -1,0 +1,5 @@
+bashrc_bak
+config.fish
+music.sh
+README.md
+updateAndUpgrade.sh
