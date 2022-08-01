@@ -93,18 +93,16 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # my custom alias
-alias vms='cd ~/workspace/vms/vms1/mytag-vms/mytag-vms && code . && echo ${rpass} | sudo -S docker-compose -f docker-compose.local.yaml up --build --force-recreate | grep mytag-vms-node'
+alias vms='cd ~/workspace/mytag-vms && code . && echo ${rpass} | sudo -S docker-compose -f docker-compose.local.yaml up --build --force-recreate | grep mytag-vms-node'
 alias vm='~/workspace/vms/vms1/mytag-vms/mytag-vms/mail-queue-local.sh && exit'
-alias prm='cd ~/workspace/postroom && code . && yarn start:l'
-alias prma='cd ~/workspace/postroom-admin && code . && yarn start:local'
+alias postroom='cd ~/workspace/postroom && code . && yarn start:l'
+alias postroom-admin='cd ~/workspace/postroom-admin && code . && yarn start:local'
 alias pmail="maildev --incoming-user devuser --incoming-pass password"
 alias e='exit'
 alias c='clear'
 alias scs='systemctl suspend -i'
 alias sri='systemctl reboot -i'
 alias shn='shutdown now'
-alias xf='xinput float 17'
-alias xrf='xinput reattach 17 3'
 alias xclip="xclip -selection c"
 alias gp='echo -n kFutKRdPHPm3PP3VMXuM | xclip'
 alias gm='echo -n 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 | xclip'
@@ -112,7 +110,14 @@ alias gpp='echo -n kFutKRdPHPm3PP3VMXuM | xclip && git pull'
 alias gpe='echo -n yCPdVVqxuKSkgKzza2Zn | xclip && git pull'
 alias met='sudo vim /etc/mongod.conf'
 alias mrs='sudo systemctl restart mongod.service && exit'
-
+alias sss="systemctl suspend"
+alias gpep="gpp;git push"
+alias pp='echo ${rpass} | sudo -S '
+alias textMode='byobu'
+alias startMongo='cd ~/containers; pp docker-compose -f mongo_postroom.yml up -d'
+alias stopMongo='cd ~/containers; pp docker-compose -f mongo_postroom.yml down'
+alias insideMongo='sudo docker exec -it $(sudo docker ps -aqf "name=^containers_mongodb_container_1$") /bin/bash'
+alias mongoContainer='startMongo && insideMongo'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -136,11 +141,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=/home/loremine/.meteor:$PATH
 export rpass="'"
+export PATH=/home/stanlymathai/.meteor:$PATH
 
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export PATH=$PATH:/opt/gradle/gradle-6.5.1/bin
-export ANDROID_SDK_ROOT=/home/loremine/Android/Sdk
-export ANDROID_HOME=/home/loremine/Android/Sdk
-
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
